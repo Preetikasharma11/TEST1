@@ -1,0 +1,110 @@
+question: LeetCode Jewel and Stone 
+class Solution {
+
+public:
+
+  int numJewelsInStones(string jewels, string stones) {
+
+    unordered_set<char> jewelSet;
+
+    int count = 0;
+
+    // Add all jewels to a set
+
+    for (char jewel : jewels) {
+
+      jewelSet.insert(jewel);
+
+    }
+
+    // Count stones that are jewels
+
+    for (char stone : stones) {
+
+      if (jewelSet.count(stone) > 0) {
+
+        count++;
+
+      }
+
+    }
+
+    return count;
+
+  }
+
+};
+
+question: House Robber
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        ios_base::sync_with_stdio(false); 
+		cin.tie(NULL); 
+		cout.tie(NULL);
+        int rob1=0,rob2=0;
+        for(int n: nums){
+            int temp=max(n+rob1,rob2);
+            rob1=rob2;
+            rob2=temp;
+        }
+        return max(rob1,rob2);
+    }
+};
+
+question: sorting the sentence
+class Solution {
+public:
+    string sortSentence(string s) {
+    s+=" ";
+    vector<string> v(9);
+    string s1="";
+    for(char i: s)
+    {
+        if(i!=' ')
+        {
+            s1+=i;
+        }
+        else{
+            char a = s1.back();
+            int a1= a-'0';
+
+            s1.pop_back();
+            v[a1-1]=s1;
+            s1="";
+        }
+    }
+
+    s1="";
+    for(auto i : v)
+    {
+        s1+=i;
+        s1+=" ";
+    }
+   while(s1.back()==' ')
+    {
+        s1.pop_back();
+    }
+    return s1;
+
+
+    }
+};
+
+question : reverse string
+#include<string>
+#include<iostream>
+using namespace std;
+
+string reverseString(string str)
+{
+	// Write your code here.
+	   	int a=0;
+		int b=str.size()-1;
+		while(a<b){
+			swap(str[a],str[b]);
+			a++;
+			b--;
+		}
+		return str;
+}
